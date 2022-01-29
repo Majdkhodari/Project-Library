@@ -15,7 +15,7 @@ const MemberList = () => {
   const handleShow = () => setIsShowing(true);
 
   return (
-    <div>
+    <div className="content">
       <Button variant="primary" size="sm" onClick={handleShow}>
         + New
       </Button>
