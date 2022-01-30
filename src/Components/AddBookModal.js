@@ -3,13 +3,15 @@ import { Modal, Button, Form} from "react-bootstrap";
 import booksStore from '../Stores/bookStore';
 
 const AddBookModal = ({ isShowing, handleClose }) => {
+  const [selectedGenre, setSelectedGenre] = useState([]);
   const [book, setBook] = useState({
     title: "",
     author: "",
-    genre: "",
   });
 
   const handleChange = (event) => {
+    if (event.target.name === "genre")
+        setSelectedGenre([...selectedGenre, event.target.value]);
     setBook({ ...book, [event.target.name]: event.target.value });
   };
 
@@ -39,7 +41,7 @@ const AddBookModal = ({ isShowing, handleClose }) => {
           <Modal.Body>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Book Title</Form.Label>
+                <Form.Label className="required" >Book Title</Form.Label>
                 <Form.Control
                   onChange={handleChange}
                   name="title"
@@ -48,7 +50,7 @@ const AddBookModal = ({ isShowing, handleClose }) => {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Author</Form.Label>
+                <Form.Label className="required">Author</Form.Label>
                 <Form.Control
                   onChange={handleChange}
                   name="author"
@@ -56,8 +58,8 @@ const AddBookModal = ({ isShowing, handleClose }) => {
                   placeholder="Author"
                 />
               </Form.Group>
-              {/* <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Genre: </Form.Label>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label className="required">Genre: </Form.Label>
                 <br/>
                 {genre.map(genre => 
                     <Form.Check
@@ -67,7 +69,15 @@ const AddBookModal = ({ isShowing, handleClose }) => {
                         type={"checkbox"}
                         id={`inline-checkbox-1`}
                         onChange={handleChange}/>)}
-              </Form.Group> */}
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label className="required">Image:</Form.Label>
+                    <Form.Control
+                    onChange={handleChange}
+                    name="Image"
+                    type="text"
+                    placeholder="Image URL"/>
+              </Form.Group>
               <Button variant="primary" type="submit">
                 Submit
               </Button>

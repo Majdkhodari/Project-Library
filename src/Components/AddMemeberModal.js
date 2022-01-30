@@ -35,7 +35,7 @@ const AddMemeberModal = ({ isShowing, handleClose }) => {
           <Modal.Body>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>First Name</Form.Label>
+                <Form.Label className="required">First Name</Form.Label>
                 <Form.Control
                   onChange={handleChange}
                   name="firstName"
@@ -44,7 +44,7 @@ const AddMemeberModal = ({ isShowing, handleClose }) => {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Last Name</Form.Label>
+                <Form.Label className="required">Last Name</Form.Label>
                 <Form.Control
                   onChange={handleChange}
                   name="lastName"
@@ -54,7 +54,7 @@ const AddMemeberModal = ({ isShowing, handleClose }) => {
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Membership</Form.Label>
+                <Form.Label className="required">Membership</Form.Label>
                 <Form.Select enabled name="membership" onChange={handleChange}>
                   {/* <option>Select One</option> */}
                   <option>gold</option>
